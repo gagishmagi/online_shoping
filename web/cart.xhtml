@@ -1,0 +1,73 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" 
+    template="/templates/template.xhtml">
+    <ui:define name="headScripts">
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <title>Cart page</title>
+    </ui:define>    
+    <ui:define name="content">
+        <div class="container">
+            <h:form id="form">
+                <p:dataTable var="cart" value="#{shoppingCart.cart}"
+                             rows="10">
+                    <f:facet name="header">
+                        <h:outputLabel value="Your cart:"/>
+                    </f:facet>
+                    <p:column headerText="Product Name">
+                        <p:outputLabel value="#{cart.p.prodName}" />
+                    </p:column>
+                    <p:column headerText="Quantity">
+                        <p:inputText value="#{cart.quantity}" />
+                    </p:column>
+                    <!--<p:column headerText="Quantity">
+                        <p:selectOneMenu id="quantity" value="#{cart}" style="width:125px">
+                            <f:selectItem itemLabel="Select One" itemValue="" />
+                            <ui:repeat var="i" value="#{util.generate(1,cart.p.prodQty)}" >
+                                <f:selectItem itemLabel="#{i}" itemValue="#{i}" />
+                            </ui:repeat>
+                        </p:selectOneMenu>
+                    </p:column>-->
+                    <p:column headerText="Price">
+                        <p:outputLabel value="#{cart.p.prodPrice}" />
+                    </p:column>
+                    <p:column headerText="Image" style="text-align: center;">
+                        <h:graphicImage name="#{cart.p.prodUrl}" library="images"
+                                        width="50" height="60" />
+                    </p:column>
+                    <p:column width="80" headerText="Delete" style="text-align: center;">
+                        <p:commandButton icon="ui-icon-trash"
+                                         onclick="return confirm('Are you sure you want to remove this item from your cart?');"
+                                         update="@form"
+                                         action="#{shoppingCart.removeFromCart(cart)}"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        Total : <h:outputLabel value="#{shoppingCart.total}"/>
+                    </f:facet>
+                </p:dataTable>
+                <p:commandButton value="Update" 
+                                 styleClass="btn btn-default"
+                                 action="#{shoppingCart.updateCart()}"
+                                 icon="fa fa-edit"
+                                 ajax="false"/>
+                <h:outputLink value="index.xhtml" styleClass="btn btn-default"
+                                 >
+                    Continue Shopping
+                </h:outputLink>
+                <p:commandButton value="Checkout" 
+                                 action="#{shoppingCart.payment()}"
+                                 ajax="false"/>
+                
+                <!--<h:outputLink value="paytype.xhtml">-->
+                <!--Process Cart-->
+                <!--</h:outputLink>-->    
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
