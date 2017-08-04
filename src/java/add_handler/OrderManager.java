@@ -22,57 +22,47 @@ import javax.faces.context.FacesContext;
  *
  * @author Omer
  */
-
 @ManagedBean
 @SessionScoped
 public class OrderManager {
-    
+
     Order order;
-    private List <Order> allOrders;
-    
-    public OrderManager()
-            {
-                order = new Order();
-                allOrders = new ArrayList<>();
-            }
-    
-    
-    public List<Order> orderbydate (Date from, Date to)
-    {
-        allOrders= new ListDao().ProductListByDates(from, to);
-          return allOrders;
-        
-        
+    private List<Order> allOrders;
+
+    public OrderManager() {
+        order = new Order();
+        allOrders = new ArrayList<>();
     }
-     public List<Order> orderbyOrderNum (int num)
-     {
-         allOrders=new ListDao().ProductListByOrderNumber(num);
-         return allOrders;
-     }
-     
-     public Order getOrder()
-     {
-         return order;
-     }
-     public void setOrder(Order order)
-     {
-         this.order=order;
-     }
-     public void updateOrder()
-     {
-         new EditDao().updateOrder(order);
-     }
-     
-     public void deleteOrder()
-     {
-         new DeleteDao().deleteOrder(order);
-     }
-     
-     public double orderTotalPrice()
-     {
-         return order.getTotalPrice();
-     }
-     
-     
-    
+
+    public List<Order> orderbydate(Date from, Date to) {
+        allOrders = new ListDao().ProductListByDates(from, to);
+        return allOrders;
+
+    }
+
+    public List<Order> orderbyOrderNum(int num) {
+        allOrders = new ListDao().ProductListByOrderNumber(num);
+        return allOrders;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public void updateOrder() {
+        new EditDao().updateOrder(order);
+    }
+
+    public void deleteOrder() {
+        new DeleteDao().deleteOrder(order);
+    }
+
+    public double orderTotalPrice() {
+        return order.getTotalPrice();
+    }
+
 }
