@@ -6,6 +6,7 @@
 package dao;
 
 import entity.Category;
+import entity.Order;
 import entity.Product;
 import entity.SubCategory;
 import org.hibernate.Session;
@@ -52,6 +53,19 @@ public class EditDao {
             Session session = factory.openSession();
             session.beginTransaction();
             session.update(product);
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean updateOrder(Order order) {
+        try {
+            SessionFactory factory = NewHibernateUtil.getSessionFactory();
+            Session session = factory.openSession();
+            session.beginTransaction();
+            session.update(order);
             session.getTransaction().commit();
             session.close();
             return true;

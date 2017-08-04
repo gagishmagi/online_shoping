@@ -6,6 +6,7 @@
 package dao;
 
 import entity.Category;
+import entity.Order;
 import entity.Product;
 import entity.SubCategory;
 import org.hibernate.Session;
@@ -52,6 +53,20 @@ public class DeleteDao {
             Session session = factory.openSession();
             session.beginTransaction();
             session.delete(product);
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public boolean deleteOrder(Order order) {
+        try {
+            SessionFactory factory = NewHibernateUtil.getSessionFactory();
+            Session session = factory.openSession();
+            session.beginTransaction();
+            session.delete(order);
             session.getTransaction().commit();
             session.close();
             return true;

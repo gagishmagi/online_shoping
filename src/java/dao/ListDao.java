@@ -6,8 +6,10 @@
 package dao;
 
 import entity.Category;
+import entity.Order;
 import entity.Product;
 import entity.SubCategory;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -142,6 +144,61 @@ public class ListDao {
             cList.toString();
             session.close();
             return cList;
+        } catch (Exception e) {
+
+        }
+        return null;
+
+    }
+    
+    public List ProductListByOrderNumber(int ordernum) {
+        try {
+            SessionFactory factory = NewHibernateUtil.getSessionFactory();
+            Session session = factory.openSession();
+            List <Order> oList
+                    = session.createQuery("SELECT deliveryCost, orderDetail, users, orderDate, orderQty, totalPrice, orderStatus FROM Order "
+                            + "WHERE (Order.orderId= '" + ordernum + "')")
+                    .list();
+            oList.toString();
+            session.close();
+            return oList;
+        } catch (Exception e) {
+
+        }
+        return null;
+
+    }
+    
+    public List allOrdersList() {
+
+        try {
+            SessionFactory factory = NewHibernateUtil.getSessionFactory();
+            Session session = factory.openSession();
+            List<Product> cList
+                    = session.createQuery("SELECT * FROM Order")
+                    .list();
+            cList.toString();
+            session.close();
+            return cList;
+        } catch (Exception e) {
+
+        }
+        return null;
+
+    }
+    
+    public List ProductListByDates(Date from, Date to) {
+        try {
+            SessionFactory factory = NewHibernateUtil.getSessionFactory();
+            Session session = factory.openSession();
+            List <Order> oList
+                    = session.createQuery("SELECT deliveryCost, orderDetail, users, orderDate, orderQty, totalPrice, orderStatus FROM Order "
+                            + "WHERE (Order.orderDate >= " + from + "')"
+                            + "And (order.orderDate <= " + to + ")")
+                    .list();
+            oList.toString();
+            session.close();
+            return oList;
         } catch (Exception e) {
 
         }
