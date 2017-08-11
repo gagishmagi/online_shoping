@@ -9,6 +9,7 @@ import dao.AddDao;
 import dao.ListDao;
 import entity.Category;
 import entity.SubCategory;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -22,7 +23,7 @@ import javax.faces.model.SelectItem;
  */
 @ManagedBean
 @SessionScoped
-public class SubCategoryManager {
+public class SubCategoryManager implements Serializable {
 
     SubCategory subcat = new SubCategory();
     Category category = new Category();

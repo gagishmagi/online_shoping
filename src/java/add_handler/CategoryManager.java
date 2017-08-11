@@ -7,6 +7,7 @@ package add_handler;
 
 import dao.AddDao;
 import entity.Category;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -20,7 +21,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @SessionScoped
-public class CategoryManager {
+public class CategoryManager implements Serializable{
     Category category = new Category();
     private List<Category> allCat = new ArrayList<>();
 

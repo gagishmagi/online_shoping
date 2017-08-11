@@ -10,6 +10,7 @@ import dao.DeleteDao;
 import dao.EditDao;
 import dao.ListDao;
 import entity.Order;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +25,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @SessionScoped
-public class OrderManager {
+public class OrderManager implements Serializable{
 
     Order order;
     private List<Order> allOrders;

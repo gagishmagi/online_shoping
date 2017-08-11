@@ -18,7 +18,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class DisplayProductManager{
+public class DisplayProductManager implements Serializable{
     Product product = new Product();
     private Product selectedProduct;
 

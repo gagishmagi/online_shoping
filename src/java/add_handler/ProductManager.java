@@ -11,6 +11,7 @@ import entity.Product;
 import entity.SubCategory;
 import java.io.File;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -27,7 +28,7 @@ import org.primefaces.model.UploadedFile;
  */
 @ManagedBean
 @SessionScoped
-public class ProductManager {
+public class ProductManager implements Serializable{
 
     Product product = new Product();
     SubCategory subcat = new SubCategory();

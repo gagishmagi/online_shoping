@@ -6,6 +6,7 @@
 package cart;
 
 import entity.Product;
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class ShoppingCart {
+public class ShoppingCart implements Serializable{
 
     private List<Item> cart = new ArrayList<>();
     private double total;
