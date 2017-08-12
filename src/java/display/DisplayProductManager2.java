@@ -18,17 +18,10 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class DisplayProductManager2 implements Serializable{
+public class DisplayProductManager2 implements Serializable {
+
     Product product = new Product();
-    private Product selectedProduct;
-
-    public Product getSelectedProduct() {
-        return selectedProduct;
-    }
-
-    public void setSelectedProduct(Product selectedProduct) {
-        this.selectedProduct = selectedProduct;
-    }
+    private String param;
 
     public Product getProduct() {
         return product;
@@ -37,9 +30,19 @@ public class DisplayProductManager2 implements Serializable{
     public void setProduct(Product product) {
         this.product = product;
     }
-    
-    public List<Product> getAllProduct(){
-        List<Product> plist = new ListDao().allProductList();
-        return plist; 
+
+    public String getParam() {
+        return param;
+    }
+
+    public void setParam(String param) {
+        this.param = param;
+    }
+
+    public List<Product> getAllProductByCatName() {
+        //System.out.println(param.toLowerCase() + "--------------");
+        List<Product> plist = new ListDao()
+                .ProductListByCatName(param.toLowerCase());
+        return plist;
     }
 }

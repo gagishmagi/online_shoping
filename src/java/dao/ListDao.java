@@ -134,14 +134,30 @@ public class ListDao {
         try {
             SessionFactory factory = NewHibernateUtil.getSessionFactory();
             Session session = factory.openSession();
-            List<Product> cList
+            /*List<Product> cList
                     = session.createQuery("SELECT product FROM SubCategory "
                             + "sub_category, Category category,Product product"
                             + "WHERE sub_category.category.catId = category.catId "
                             + "AND product.subCategory.subCatId = sub_category.subCatId"
                             + "AND (category.catName= '" + catname + "')")
-                    .list();
-            cList.toString();
+                    .list();*/
+            //System.out.println("Cat Name: " + catname);
+            List<Product> cList
+                    = session.createQuery(
+                              "SELECT product FROM "
+                            + "SubCategory sub,"
+                            + "Category category,"
+                            + "Product product"
+                            + " WHERE "
+                            + " product.subCategory.subCatId = sub.subCatId"
+                            + " AND "
+                            + " sub.category.catId = category.catId"
+                            + " AND "
+                            + " lower(category.catName) = '"+catname+"' "
+                            //+ " ( lower(category.catName) = '" + catname + "' );"
+                    )
+                    .list();            
+            //System.out.println(cList.toString());
             session.close();
             return cList;
         } catch (Exception e) {
@@ -150,12 +166,12 @@ public class ListDao {
         return null;
 
     }
-    
+
     public List ProductListByOrderNumber(int ordernum) {
         try {
             SessionFactory factory = NewHibernateUtil.getSessionFactory();
             Session session = factory.openSession();
-            List <Order> oList
+            List<Order> oList
                     = session.createQuery("SELECT deliveryCost, orderDetail, users, orderDate, orderQty, totalPrice, orderStatus FROM Order "
                             + "WHERE (Order.orderId= '" + ordernum + "')")
                     .list();
@@ -168,7 +184,7 @@ public class ListDao {
         return null;
 
     }
-    
+
     public List allOrdersList() {
 
         try {
@@ -186,12 +202,12 @@ public class ListDao {
         return null;
 
     }
-    
+
     public List ProductListByDates(Date from, Date to) {
         try {
             SessionFactory factory = NewHibernateUtil.getSessionFactory();
             Session session = factory.openSession();
-            List <Order> oList
+            List<Order> oList
                     = session.createQuery("SELECT deliveryCost, orderDetail, users, orderDate, orderQty, totalPrice, orderStatus FROM Order "
                             + "WHERE (Order.orderDate >= " + from + "')"
                             + "And (order.orderDate <= " + to + ")")
