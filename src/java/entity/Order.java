@@ -25,7 +25,7 @@ public class Order  implements java.io.Serializable {
     public Order() {
     }
 
-	
+
     public Order(DeliveryCost deliveryCost, OrderDetail orderDetail, Users users, Date orderDate, int orderQty, double totalPrice, String orderStatus) {
         this.deliveryCost = deliveryCost;
         this.orderDetail = orderDetail;
@@ -45,67 +45,69 @@ public class Order  implements java.io.Serializable {
        this.orderStatus = orderStatus;
        this.orderDetails = orderDetails;
     }
-   
+
     public Integer getOrderId() {
         return this.orderId;
     }
-    
+
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
     public DeliveryCost getDeliveryCost() {
         return this.deliveryCost;
     }
-    
+
     public void setDeliveryCost(DeliveryCost deliveryCost) {
         this.deliveryCost = deliveryCost;
     }
     public OrderDetail getOrderDetail() {
         return this.orderDetail;
     }
-    
+
     public void setOrderDetail(OrderDetail orderDetail) {
         this.orderDetail = orderDetail;
     }
     public Users getUsers() {
         return this.users;
     }
-    
+
     public void setUsers(Users users) {
         this.users = users;
     }
     public Date getOrderDate() {
         return this.orderDate;
     }
-    
+
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
     public int getOrderQty() {
         return this.orderQty;
     }
-    
+
     public void setOrderQty(int orderQty) {
         this.orderQty = orderQty;
     }
     public double getTotalPrice() {
-        return this.totalPrice;
+        double per = this.totalPrice * 17; // Total price + calculated MAAM
+        per = per / 100;
+        return this.totalPrice + per;
     }
-    
+
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
     public String getOrderStatus() {
         return this.orderStatus;
     }
-    
+
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
     }
     public Set getOrderDetails() {
         return this.orderDetails;
     }
-    
+
     public void setOrderDetails(Set orderDetails) {
         this.orderDetails = orderDetails;
     }
