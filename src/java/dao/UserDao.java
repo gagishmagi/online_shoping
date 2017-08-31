@@ -6,20 +6,10 @@
 package dao;
 
 import entity.Users;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.jdbc.ReturningWork;
 import util.NewHibernateUtil;
 
 public class UserDao {

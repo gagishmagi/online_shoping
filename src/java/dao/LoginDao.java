@@ -6,7 +6,7 @@
 package dao;
 
 import entity.Users;
-import java.sql.SQLException;
+import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -19,7 +19,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean(name="login")
 @SessionScoped
-public class LoginDao{
+public class LoginDao implements Serializable{
    
     private UserDao userDAO = new UserDao();
     private Users user = new Users();

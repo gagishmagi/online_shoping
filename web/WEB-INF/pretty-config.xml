@@ -23,6 +23,10 @@
         <pattern value="/category/#{displayProductManager2.param}" />
         <view-id value="/catdetails.xhtml" />
     </url-mapping>
+    <url-mapping id="productdetails">
+        <pattern value="/product" />
+        <view-id value="/product-details.xhtml" />
+    </url-mapping>
     <url-mapping id="success">
         <pattern value="/success/" />
         <view-id value="/success.xhtml" />
