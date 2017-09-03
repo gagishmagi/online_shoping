@@ -1,4 +1,4 @@
-package entity;
+package java.entity;
 // Generated 08/07/2017 8:14:19 PM by Hibernate Tools 4.3.1
 
 

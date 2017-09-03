@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package display;
+package java.display;
 
-import dao.ListDao;
-import entity.Product;
+import java.dao.ListDao;
+import java.entity.Product;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;

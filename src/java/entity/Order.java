@@ -1,4 +1,4 @@
-package entity;
+package java.entity;
 // Generated 08/07/2017 8:14:19 PM by Hibernate Tools 4.3.1
 
 
@@ -21,12 +21,13 @@ public class Order  implements java.io.Serializable {
      private double totalPrice;
      private String orderStatus;
      private Set orderDetails = new HashSet(0);
+     private Direction direction;
 
     public Order() {
     }
 
 
-    public Order(DeliveryCost deliveryCost, OrderDetail orderDetail, Users users, Date orderDate, int orderQty, double totalPrice, String orderStatus) {
+    public Order(DeliveryCost deliveryCost, OrderDetail orderDetail, Users users, Date orderDate, int orderQty, double totalPrice, String orderStatus, Direction direction) {
         this.deliveryCost = deliveryCost;
         this.orderDetail = orderDetail;
         this.users = users;
@@ -34,6 +35,7 @@ public class Order  implements java.io.Serializable {
         this.orderQty = orderQty;
         this.totalPrice = totalPrice;
         this.orderStatus = orderStatus;
+        this.direction = direction;
     }
     public Order(DeliveryCost deliveryCost, OrderDetail orderDetail, Users users, Date orderDate, int orderQty, double totalPrice, String orderStatus, Set orderDetails) {
        this.deliveryCost = deliveryCost;
@@ -89,8 +91,18 @@ public class Order  implements java.io.Serializable {
         this.orderQty = orderQty;
     }
     public double getTotalPrice() {
-        double per = this.totalPrice * 17; // Total price + calculated MAAM
+        double per = this.totalPrice * 17; // Total price + calculated MAAM 17%
         per = per / 100;
+        switch(this.direction){
+        case North:// + 10 nis
+        	this.totalPrice= this.totalPrice+10;
+        case South:// + 20 nis
+        	this.totalPrice= this.totalPrice+20;
+        case East:// +30 nis
+        	this.totalPrice= this.totalPrice+30;
+        case West:// +40 nis
+        	this.totalPrice= this.totalPrice+40;
+        };
         return this.totalPrice + per;
     }
 
@@ -110,6 +122,10 @@ public class Order  implements java.io.Serializable {
 
     public void setOrderDetails(Set orderDetails) {
         this.orderDetails = orderDetails;
+    }
+    
+    public enum Direction{
+    	North,South,West,East;
     }
 
 

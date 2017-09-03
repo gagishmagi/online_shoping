@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package add_handler;
+package java.add_handler;
 
-import dao.AddDao;
-import dao.DeleteDao;
-import dao.EditDao;
-import dao.ListDao;
-import entity.Order;
+import java.dao.AddDao;
+import java.dao.DeleteDao;
+import java.dao.EditDao;
+import java.dao.ListDao;
+import java.entity.Order;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;

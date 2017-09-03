@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package add_handler;
+package java.add_handler;
 
-import dao.AddDao;
-import dao.ListDao;
-import entity.Product;
-import entity.SubCategory;
+import java.dao.AddDao;
+import java.dao.ListDao;
+import java.entity.Product;
+import java.entity.SubCategory;
 import java.io.File;
 import java.io.InputStream;
 import java.io.Serializable;

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cart;
+package java.cart;
 
-import entity.Product;
+import java.entity.Product;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
