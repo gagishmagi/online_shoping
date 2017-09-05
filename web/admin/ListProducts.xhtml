@@ -27,12 +27,9 @@
             <p:column headerText="actions">
                 <h:form>
                     <p:panelGrid columns="2"  id="forautowidth">
-                        <p:commandLink value="Edit" 
-                                       action="#"
-                                       ajax="false"/>
-                        <p:commandLink value="Delete" 
-                                       action="#"
-                                       ajax="false"/>        
+                        <h:commandButton value="Delete" 
+                                       action="#displayProductManage.deleteProduct"
+                                       />        
                     </p:panelGrid>
                 </h:form>                    
             </p:column>

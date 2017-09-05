@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Order Manager</title>
+    </h:head>
+    <h:body>
+        <p:dataTable value="#{UsersManager.allUsers}"
+                     var="users"
+                     rows="5">
+            <p:column headerText="user id">
+                <p:outputLabel value="#{users.userId}" />
+            </p:column>
+            <p:column headerText="user role">
+                <p:outputLabel value="#{users.userRole}" />
+            </p:column>
+            <p:column headerText="user name">
+                <p:outputLabel value="#{users.username}" />
+            </p:column>
+            <p:column headerText="User first name">
+                <p:outputLabel value="#{users.userFname}" />
+            </p:column>
+            <p:column headerText="User last name">
+                <p:outputLabel value="#{users.userLname}" />
+            </p:column>
+            <p:column headerText="Email">
+                <p:outputLabel value="#{users.email}" />
+            </p:column>
+            <p:column headerText="Registeration date">
+                <p:outputLabel value="#{users.regDate}" />
+            </p:column>
+            <p:column headerText="actions">
+                <h:form>
+                    <p:panelGrid columns="2"  id="forautowidth">
+                        <h:commandButton value="Delete" 
+                                       action="#{UsersManager.deleteUser}"/>        
+                    </p:panelGrid>
+                </h:form>                    
+            </p:column>
+        </p:dataTable>
+    </h:body>
+</html>
+

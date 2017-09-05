@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package java.dao;
 
-import entity.Category;
-import entity.Order;
-import entity.Product;
-import entity.SubCategory;
+import java.entity.Category; 
+import java.entity.Order;
+import java.entity.Product;
+import java.entity.SubCategory;
+
+import java.entity.Users;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import util.NewHibernateUtil;
@@ -67,6 +70,19 @@ public class DeleteDao {
             Session session = factory.openSession();
             session.beginTransaction();
             session.delete(order);
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean deleteUser(Users user) {
+        try {
+            SessionFactory factory = NewHibernateUtil.getSessionFactory();
+            Session session = factory.openSession();
+            session.beginTransaction();
+            session.delete(user);
             session.getTransaction().commit();
             session.close();
             return true;

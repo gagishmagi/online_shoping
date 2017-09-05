@@ -5,10 +5,12 @@
  */
 package dao;
 
-import entity.Category;
-import entity.Order;
-import entity.Product;
-import entity.SubCategory;
+import java.entity.Category; 
+import java.entity.Order;
+import java.entity.Product;
+import java.entity.SubCategory;
+
+import java.entity.Users;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
@@ -215,6 +217,22 @@ public class ListDao {
             oList.toString();
             session.close();
             return oList;
+        } catch (Exception e) {
+
+        }
+        return null;
+
+    }
+    public List AllUsers() {
+        try {
+            SessionFactory factory = NewHibernateUtil.getSessionFactory();
+            Session session = factory.openSession();
+            List<Users> uList
+                    = session.createQuery("SELECT * FROM Users")
+                    .list();
+            uList.toString();
+            session.close();
+            return uList;
         } catch (Exception e) {
 
         }
