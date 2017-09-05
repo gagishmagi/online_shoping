@@ -5,12 +5,14 @@
  */
 package java.display;
 
-import java.dao.ListDao;
+import java.dao.ListDao; 
 import java.entity.Product;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import java.dao.DeleteDao;
 
 /**
  *
@@ -41,5 +43,9 @@ public class DisplayProductManager implements Serializable{
     public List<Product> getAllProduct(){
         List<Product> plist = new ListDao().allProductList();
         return plist; 
+    }
+    public void deletProduct()
+    {
+    	 new DeleteDao().deleteProduct(product);
     }
 }
